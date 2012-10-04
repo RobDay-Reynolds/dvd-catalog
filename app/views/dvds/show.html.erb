@@ -16,8 +16,18 @@
 </p>
 
 <p>
-  <b>ASIN (Amazon Product ID):</b>
-  <%= @dvd.amazon_id %>
+  <b>Actors:</b>
+  <% @actors.each do |a| %>
+    <%= link_to a[:name], a %>&nbsp;
+  <% end %>
+</p>
+
+<p>
+  <b>Director:</b>
+  <%= link_to @director.name, @director %>
+</p>
+
+<p>
   <% if @dvd.amazon_id %>
     <a href="http://www.amazon.com/gp/product/<%= @dvd.amazon_id %>/">Go to Amazon page</a>
   <% end %>

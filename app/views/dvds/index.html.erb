@@ -1,29 +1,33 @@
-<h1>Listing dvds</h1>
+<div style="text-align:center;">
+<div class="row"><h1>DVDs</h1></div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Release date</th>
-    <th>Summary</th>
-    <th>Amazon</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="row">
+    <div class="span2" style="font-weight:bold; text-align:left;">Name</div>
+    <div class="span2" style="font-weight:bold; text-align:left;">Release Date</div>
+    <div class="span6" style="font-weight:bold;">Summary</div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <hr />
+    </div>
+  </div>
 
 <% @dvds.each do |dvd| %>
-  <tr>
-    <td><%= dvd.name %></td>
-    <td><%= dvd.release_date %></td>
-    <td><%= dvd.summary %></td>
-    <td><%= dvd.amazon_id %></td>
-    <td><%= link_to 'Show', dvd %></td>
-    <td><%= link_to 'Edit', edit_dvd_path(dvd) %></td>
-    <td><%= link_to 'Destroy', dvd, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="row">
+    <div class="span2" style="text-align:left;"><%= link_to dvd.name, dvd %></div>
+    <div class="span2" style="text-align:left;"><%= dvd.release_date %></div>
+    <div class="span7" style="text-align:left;"><%= dvd.summary[0..100] %><% if dvd.summary.length > 100 %>...<% end %></div>
+    <div class="span1">
+        <%= link_to 'Show', dvd %>/<%= link_to 'Edit', edit_dvd_path(dvd) %>
+        <%= link_to 'Remove', dvd, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <div class="row">
+      <div class="span12" style="padding-left:28px;">
+        <hr />
+      </div>
+    </div>
+  </div>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Dvd', new_dvd_path %>
+<%= link_to 'Add A New Dvd', new_dvd_path %>
+</div>

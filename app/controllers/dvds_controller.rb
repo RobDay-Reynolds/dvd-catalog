@@ -14,6 +14,8 @@ class DvdsController < ApplicationController
   # GET /dvds/1.json
   def show
     @dvd = Dvd.find(params[:id])
+    @actors = @dvd.actors
+    @director = Director.find(@dvd.director_id)
 
     respond_to do |format|
       format.html # show.html.erb

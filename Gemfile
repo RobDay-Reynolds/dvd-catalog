@@ -22,6 +22,10 @@ end
 
 gem 'jquery-rails'
 
+gem 'bootstrap-rails'
+gem 'bootstrap-sass'
+gem 'bootstrap-datepicker-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

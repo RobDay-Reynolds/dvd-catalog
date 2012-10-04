@@ -1,3 +1,8 @@
+<script>
+    $(function(){
+        $(".datepicker").datepicker();
+    });
+</script>
 <h1>Add A New DVD</h1>
 
 <%= form_for(@dvd, :html => { :multipart => true }) do |f| %>
@@ -7,7 +12,7 @@
   </p>
   <p>
     <label>Release Date</label><br />
-    <%= select_date Date.today, :prefix => :release_date %>
+    <%= f.text_field :release_date, :class => 'datepicker', :readonly => 1 %>
   </p>
   <p>
     <%= f.label :summary %><br />
