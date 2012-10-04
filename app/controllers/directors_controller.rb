@@ -73,6 +73,11 @@ class DirectorsController < ApplicationController
   # DELETE /directors/1.json
   def destroy
     @director = Director.find(params[:id])
+    @dvds = Dvd.where(:director_id => @director.id)
+    @dvds.each do |dvd|
+        dvd.director_id = nil
+        dvd.save
+    end
     @director.destroy
 
     respond_to do |format|

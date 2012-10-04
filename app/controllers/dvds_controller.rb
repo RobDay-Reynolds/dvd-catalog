@@ -15,7 +15,9 @@ class DvdsController < ApplicationController
   def show
     @dvd = Dvd.find(params[:id])
     @actors = @dvd.actors
-    @director = Director.find(@dvd.director_id)
+    if @dvd.director_id
+      @director = Director.find(@dvd.director_id)
+    end
 
     respond_to do |format|
       format.html # show.html.erb

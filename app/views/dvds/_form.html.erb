@@ -38,7 +38,9 @@
     </div>
     <div class="span6">
       <label>Director</label>
-      <%= select("dvd", "director_id", @directors.collect {|d| [ d.name, d.id ] }, { :include_blank => true }) %>
+      <% if @directors %>
+        <%= select("dvd", "director_id", @directors.collect {|d| [ d.name, d.id ] }, { :include_blank => true }) %>
+      <% end %>
     </div>
   </div>
   <div class="row" style="text-align:center;">

@@ -24,7 +24,9 @@
 
 <p>
   <b>Director:</b>
-  <%= link_to @director.name, @director %>
+  <% if @director %>
+    <%= link_to @director.name, @director %>
+  <% end %>
 </p>
 
 <p>
