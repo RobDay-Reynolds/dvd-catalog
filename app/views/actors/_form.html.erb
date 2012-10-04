@@ -1,29 +1,41 @@
 <%= form_for(@actor) do |f| %>
   <% if @actor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
+    <div class="row" style="text-align:center;">
+      <div class="span12" style="text-align:center;">
+      <div id="error_explanation" style="text-align:center;">
+        <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
 
-      <ul>
-      <% @actor.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @actor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+      </div>
     </div>
   <% end %>
 
-  <div class="row">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="row" style="text-align:center;">
+    <div class="span12" style="text-align:center;">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
   </div>
-  <div class="row">
-    <label>Date of Birth</label>
-    <%= f.text_field :date_of_birth, :class => 'datepicker', :readonly => 1 %>
+  <div class="row" style="text-align:center;">
+    <div class="span12" style="text-align:center;">
+      <label>Date of Birth</label>
+      <%= f.text_field :date_of_birth, :class => 'datepicker', :readonly => 1 %>
+    </div>
   </div>
-  <div class="row">
-    <%= f.label :gender %>
-    <%= f.text_field :gender %>
+  <div class="row" style="text-align:center;">
+    <div class="span12" style="text-align:center;">
+      <%= f.label :gender %>
+      <%= f.text_field :gender %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row" style="text-align:center;">
+    <div class="span12" style="text-align:center;">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

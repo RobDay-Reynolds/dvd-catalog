@@ -2,7 +2,17 @@ class DvdsController < ApplicationController
   # GET /dvds
   # GET /dvds.json
   def index
-    @dvds = Dvd.all
+    if params[:name_search] && params[:name_search].length > 0
+      @dvds = Dvd.search_name(params[:name_search])
+    elsif params[:actor_search]
+      @dvds = Dvd.search_actor(params[:actor_search])
+    elsif params[:director_search]
+      @dvds = Dvd.search_director(params[:director_search])
+    else
+      @dvds = Dvd.all
+    end
+    @actors = Actor.all
+    @directors = Director.all
 
     respond_to do |format|
       format.html # index.html.erb

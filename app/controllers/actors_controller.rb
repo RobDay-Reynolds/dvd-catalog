@@ -2,7 +2,16 @@ class ActorsController < ApplicationController
   # GET /actors
   # GET /actors.json
   def index
-    @actors = Actor.all
+    if params[:name_search] && params[:name_search].length > 0
+      @actors = Actor.search_name(params[:name_search])
+    elsif params[:age_range_search]
+      @actors = Actor.search_age_range(params[:age_range_search])
+    elsif params[:dvd_search]
+      @actors = Actor.search_dvd(params[:dvd_search])
+    else
+      @actors = Actor.all
+    end
+    @dvds = Dvd.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +23,12 @@ class ActorsController < ApplicationController
   # GET /actors/1.json
   def show
     @actor = Actor.find(params[:id])
+    @dvds = Dvd.where("id IN (SELECT dvd_id FROM actors_dvds WHERE actor_id = :actor_id)", {:actor_id => @actor.id})
+    now = Time.now.utc.to_date
+    if @actor.date_of_birth
+      dob = @actor.date_of_birth.to_date
+      @age = now.year - @actor.date_of_birth.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    end
 
     respond_to do |format|
       format.html # show.html.erb

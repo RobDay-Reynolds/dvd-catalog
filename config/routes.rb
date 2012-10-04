@@ -4,6 +4,8 @@ DvdCatalog::Application.routes.draw do
   resources :actors
 
   resources :dvds
+  
+  root :to => 'dvds#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

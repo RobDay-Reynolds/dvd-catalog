@@ -1,5 +1,62 @@
 <div style="text-align:center;">
-  <div class="row"><h1>DVDs</h1></div>
+  <div class="row" style="text-align:padding-left:15px;">
+    <div class="span12">
+      <h1>DVDs</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4 offset4">
+      <h4>Search</h4>
+    </div>
+  </div>
+    <div class="row">
+      <div class="span12">
+        <ul class="nav nav-tabs">
+          <li><a class="font-weight:bold;" href="#name" data-toggle="tab">By Name</a></li>
+          <li><a class="font-weight:bold;" href="#actor" data-toggle="tab">By Actor</a></li>
+          <li><a class="font-weight:bold;" href="#director" data-toggle="tab">By Director</a></li>
+        </ul>
+      </div>
+    </div>
+      <div class="tab-content">
+        <div class="tab-pane active" id="name">
+          <form>
+            <label>Name Search</label>
+            <input type="text" name="name_search" />
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+        <div class="tab-pane" id="actor">
+          <form>
+            <label>Actor Search</label>
+            <select name="actor_search">
+              <option value=""></option>
+              <% @actors.each do |a| %>
+                <option value=<%= a.id %>><%= a.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+        <div class="tab-pane" id="director">
+          <form>
+            <label>Director Search</label>
+            <select name="director_search">
+              <option value=""></option>
+              <% @directors.each do |d| %>
+                <option value=<%= d.id %>><%= d.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+  <div class="row">
+    <div class="span12">
+      <hr />
+    </div>
+  </div>
 
   <div class="row">
     <%= link_to 'Add A New Dvd', new_dvd_path %>

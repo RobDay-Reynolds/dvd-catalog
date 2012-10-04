@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(:version => 20121004025422) do
 
   create_table "actors", :force => true do |t|
-    t.string   "name"
+    t.string   "name",          :null => false
     t.date     "date_of_birth"
-    t.string   "gender"
+    t.string   "gender",        :null => false
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(:version => 20121004025422) do
   end
 
   create_table "directors", :force => true do |t|
-    t.string   "name"
+    t.string   "name",          :null => false
     t.date     "date_of_birth"
-    t.string   "gender"
+    t.string   "gender",        :null => false
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

@@ -30,7 +30,7 @@
 </p>
 
 <p>
-  <% if @dvd.amazon_id %>
+  <% if @dvd.amazon_id.length > 0 %>
     <a href="http://www.amazon.com/gp/product/<%= @dvd.amazon_id %>/">Go to Amazon page</a>
   <% end %>
 </p>

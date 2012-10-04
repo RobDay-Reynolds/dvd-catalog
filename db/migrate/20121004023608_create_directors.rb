@@ -1,9 +1,9 @@
 class CreateDirectors < ActiveRecord::Migration
   def change
     create_table :directors do |t|
-      t.string :name
+      t.string :name, :null => false, :uniqueness => true
       t.date :date_of_birth
-      t.string :gender
+      t.string :gender, :null => false
 
       t.timestamps
     end

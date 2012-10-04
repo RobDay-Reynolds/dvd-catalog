@@ -15,12 +15,22 @@
     <script>
         $(function(){
             $(".datepicker").datepicker();
+            $(".tabs a").click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            })
         });
+
     </script>
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container" style="text-align:center;">
-          <h2>DVD Catalog</h1>
+          <a class="brand" href="/">DVD Catalog</a>
+          <div class="row" style="text-align:right">
+            <div class="span2 offset 2"><a href="/dvds">DVDs</a></div>
+            <div class="span2"><a href="/actors">Actors</a></div>
+            <div class="span2"><a href="/directors">Directors</a></div>
+          </div>
         </div>
       </nav>
     </header>

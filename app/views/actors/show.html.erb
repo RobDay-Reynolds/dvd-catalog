@@ -11,8 +11,20 @@
 </p>
 
 <p>
+  <b>Age:</b>
+  <%= @age %>
+</p>
+
+<p>
   <b>Gender:</b>
   <%= @actor.gender %>
+</p>
+
+<p>
+  <b>DVDs:</b>
+  <% @dvds.each do |d| %>
+    <%= link_to d[:name], d %>&nbsp;
+  <% end %>
 </p>
 
 
