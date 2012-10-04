@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <b>Release date:</b>
+  <b>Release Date:</b>
   <%= @dvd.release_date %>
 </p>
 
@@ -16,8 +16,11 @@
 </p>
 
 <p>
-  <b>Amazon:</b>
+  <b>ASIN (Amazon Product ID):</b>
   <%= @dvd.amazon_id %>
+  <% if @dvd.amazon_id %>
+    <a href="http://www.amazon.com/gp/product/<%= @dvd.amazon_id %>/">Go to Amazon page</a>
+  <% end %>
 </p>
 
 

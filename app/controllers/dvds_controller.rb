@@ -25,6 +25,7 @@ class DvdsController < ApplicationController
   # GET /dvds/new.json
   def new
     @dvd = Dvd.new
+    @directors = Director.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +36,16 @@ class DvdsController < ApplicationController
   # GET /dvds/1/edit
   def edit
     @dvd = Dvd.find(params[:id])
+    @directors = Director.all
   end
 
   # POST /dvds
   # POST /dvds.json
   def create
     @dvd = Dvd.new(params[:dvd])
+    if @dvd.save
+        @dvd.actors = Actor.find(params[:actor_ids]) if params[:actor_ids]
+    end
 
     respond_to do |format|
       if @dvd.save
@@ -57,6 +62,9 @@ class DvdsController < ApplicationController
   # PUT /dvds/1.json
   def update
     @dvd = Dvd.find(params[:id])
+    if @dvd.update_attributes(params[:dvd])
+        @dvd.actors = Actor.find(params[:actor_ids]) if params[:actor_ids]
+    end
 
     respond_to do |format|
       if @dvd.update_attributes(params[:dvd])
