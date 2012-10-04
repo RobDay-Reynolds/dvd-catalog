@@ -1,6 +1,12 @@
 <div style="text-align:center;">
-<div class="row"><h1>DVDs</h1></div>
+  <div class="row"><h1>DVDs</h1></div>
 
+  <div class="row">
+    <%= link_to 'Add A New Dvd', new_dvd_path %>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
   <div class="row">
     <div class="span2" style="font-weight:bold; text-align:left;">Name</div>
     <div class="span2" style="font-weight:bold; text-align:left;">Release Date</div>
@@ -11,23 +17,25 @@
       <hr />
     </div>
   </div>
-
-<% @dvds.each do |dvd| %>
-  <div class="row">
-    <div class="span2" style="text-align:left;"><%= link_to dvd.name, dvd %></div>
-    <div class="span2" style="text-align:left;"><%= dvd.release_date %></div>
-    <div class="span7" style="text-align:left;"><%= dvd.summary[0..100] %><% if dvd.summary.length > 100 %>...<% end %></div>
-    <div class="span1">
-        <%= link_to 'Show', dvd %>/<%= link_to 'Edit', edit_dvd_path(dvd) %>
-        <%= link_to 'Remove', dvd, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+  
+  <% @dvds.each do |dvd| %>
     <div class="row">
-      <div class="span12" style="padding-left:28px;">
-        <hr />
+      <div class="span2" style="text-align:left;"><%= link_to dvd.name, dvd %></div>
+      <div class="span2" style="text-align:left;"><%= dvd.release_date %></div>
+      <div class="span7" style="text-align:left;"><%= dvd.summary[0..100] %><% if dvd.summary.length > 100 %>...<% end %></div>
+      <div class="span1">
+          <%= link_to 'Show', dvd %>/<%= link_to 'Edit', edit_dvd_path(dvd) %>
+          <%= link_to 'Remove', dvd, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <div class="row">
+        <div class="span12" style="padding-left:28px;">
+          <hr />
+        </div>
       </div>
     </div>
+  <% end %>
+  
+  <div class="row">
+    <%= link_to 'Add A New Dvd', new_dvd_path %>
   </div>
-<% end %>
-
-<%= link_to 'Add A New Dvd', new_dvd_path %>
 </div>

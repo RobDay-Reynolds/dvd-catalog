@@ -1,48 +1,10 @@
-<script>
-    $(function(){
-        $(".datepicker").datepicker();
-    });
-</script>
 <div class="span12" style="text-align:center;">
-<h1>Editing DVD</h1>
+  <h1>Editing DVD</h1>
 
-<%= form_for(@dvd, :html => { :multipart => true }) do |f| %>
-  <div class="row">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-  </div>
-  <div class="row">
-        <%= f.label :summary %>
-        <%= f.text_area :summary, :class => 'span10', :rows => 5 %>
-    </div>
-  </div>
-  <div class="row" style="text-align:center;">
-    <div class="span6">
-      <label>Release Date</label>
-      <%= f.text_field :release_date, :class => 'datepicker', :readonly => 1 %><span class="add-on"><i class="icon-calendar"></i></span>
-    </div>
-    <div class="span6">
-      <label>ASIN (Amazon Product ID)</label>
-      <%= f.text_field :amazon_id %>
-    </div>
-  </div>
-  <div class="row" style="text-align:center;">
-    <div class="span6">
-      <label>Actors</label>
-      <%= select_tag("actor_ids[]", options_for_select(Actor.find(:all).collect { |act| [act.name, act.id] }, @dvd.actors.collect { |act| act.id}), {:multiple=>true, :size=>6})%>
-    </div>
-    <div class="span6">
-      <label>Director</label>
-      <%= select("dvd", "director_id", @directors.collect {|d| [ d.name, d.id ] }, { :include_blank => true }) %>
-    </div>
-  </div>
-  <div class="row" style="text-align:center;">
-    <%= f.submit 'Save' %>
-  </div>
-<% end %>
+  <%= render 'form' %>  
 
-<div class="row" style="text-align:center;">
-  <%= link_to 'Show', @dvd %> |
-  <%= link_to 'Back', dvds_path %>
-</div>
+  <div class="row" style="text-align:center;">
+    <%= link_to 'Show', @dvd %> |
+    <%= link_to 'Back', dvds_path %>
+  </div>
 </div>

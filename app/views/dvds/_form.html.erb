@@ -1,0 +1,47 @@
+<%= form_for(@dvd, :html => { :multipart => true }) do |f| %>
+
+  <% if @dvd.errors.any? %>
+    <div id="error_explanation" class="row">
+      <h2><%= pluralize(@dvd.errors.count, "error") %> prohibited this DVD from being saved:</h2>
+
+      <ul>
+      <% @dvd.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+  </div>
+  <div class="row">
+        <%= f.label :summary %>
+        <%= f.text_area :summary, :class => 'span10', :rows => 5 %>
+    </div>
+  </div>
+  <div class="row" style="text-align:center;">
+    <div class="span6">
+      <label>Release Date</label>
+      <%= f.text_field :release_date, :class => 'datepicker', :readonly => 1 %>
+    </div>
+    <div class="span6">
+      <label>ASIN (Amazon Product ID)</label>
+      <%= f.text_field :amazon_id %>
+    </div>
+  </div>
+  <div class="row" style="text-align:center;">
+    <div class="span6">
+      <label>Actors</label>
+      <%= select_tag("actor_ids[]", options_for_select(Actor.find(:all).collect { |act| [act.name, act.id] }, @dvd.actors.collect { |act| act.id}), {:multiple=>true, :size=>6})%>
+    </div>
+    <div class="span6">
+      <label>Director</label>
+      <%= select("dvd", "director_id", @directors.collect {|d| [ d.name, d.id ] }, { :include_blank => true }) %>
+    </div>
+  </div>
+  <div class="row" style="text-align:center;">
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>

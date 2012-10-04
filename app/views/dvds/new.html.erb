@@ -3,37 +3,11 @@
         $(".datepicker").datepicker();
     });
 </script>
+<div class="span12" style="text-align:center;">
 <h1>Add A New DVD</h1>
 
-<%= form_for(@dvd, :html => { :multipart => true }) do |f| %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <label>Release Date</label><br />
-    <%= f.text_field :release_date, :class => 'datepicker', :readonly => 1 %>
-  </p>
-  <p>
-    <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
-  </p>
-  <p>
-    <label>ASIN (Amazon Product ID)</label><br />
-    <%= f.text_field :amazon_id %>
-  </p>
-  <p>  
-    <label>Actors</label><br />
-    <%= select_tag("actor_ids[]", options_for_select(Actor.find(:all).collect { |act| [act.name, act.id] }, @dvd.actors.collect { |act| act.id}), {:multiple=>true, :size=>6})%>
-  </p>
-  <p>
-    <label>Director</label><br />
-    <%= select("dvd", "director_id", @directors.collect {|d| [ d.name, d.id ] }, { :include_blank => true }) %>
-  </p>
-<!--  <p>Or, <a href="/directors/new" >create a new director</a></p> -->
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<%= render 'form' %>
 
-<%= link_to 'Back', dvds_path %>
+<div class="row" style="text-align:center;">
+  <%= link_to 'Back', dvds_path %>
+</div>

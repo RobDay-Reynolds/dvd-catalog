@@ -12,6 +12,11 @@
     <%= yield(:head) %>
   </head>
   <body>
+    <script>
+        $(function(){
+            $(".datepicker").datepicker();
+        });
+    </script>
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
         <div class="container" style="text-align:center;">

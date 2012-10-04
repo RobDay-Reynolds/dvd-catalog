@@ -1,27 +1,40 @@
-<h1>Listing directors</h1>
+<div style="text-align:center;">
+  <div class="row"><h1>Directors</h1></div>
+  
+  <div class="row">
+    <%= link_to 'Add A New Director', new_director_path %>
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="span4" style="font-weight:bold; text-align:left;">Name</div>
+    <div class="span3" style="font-weight:bold; text-align:left;">Date of birth</div>
+    <div class="span3" style="font-weight:bold; text-align:left;">Gender</div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <hr />
+    </div>
+  </div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date of birth</th>
-    <th>Gender</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <% @directors.each do |director| %>
+    <div class="row">
+      <div class="span4" style="text-align:left;"><%= director.name %></div>
+      <div class="span3" style="text-align:left;"><%= director.date_of_birth %></div>
+      <div class="span3" style="text-align:left;"><%= director.gender %></div>
+      <div class="span2">
+        <%= link_to 'Show', director %>/<%= link_to 'Edit', edit_director_path(director) %>/<%= link_to 'Remove', director, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <div class="row">
+        <div class="span12" style="padding-left:20px;">
+          <hr />
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-<% @directors.each do |director| %>
-  <tr>
-    <td><%= director.name %></td>
-    <td><%= director.date_of_birth %></td>
-    <td><%= director.gender %></td>
-    <td><%= link_to 'Show', director %></td>
-    <td><%= link_to 'Edit', edit_director_path(director) %></td>
-    <td><%= link_to 'Destroy', director, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Director', new_director_path %>
+  <div class="row">
+    <%= link_to 'Add A New Director', new_director_path %>
+  </div>
+</div>

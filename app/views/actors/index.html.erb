@@ -1,27 +1,41 @@
-<h1>Listing actors</h1>
+<div style="text-align:center;">
+  <div class="row"><h1>Actors</h1></div>
+  
+  <div class="row">
+    <%= link_to 'Add A New Actor', new_actor_path %> <br />
+  </div>
+  <div class="row">
+    &nbsp;
+  </div>
+  <div class="row">
+    <div class="span4" style="font-weight:bold; text-align:left;">Name</div>
+    <div class="span3" style="font-weight:bold; text-align:left;">Date of birth</div>
+    <div class="span3" style="font-weight:bold; text-align:left;">Gender</div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <hr />
+    </div>
+  </div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date of birth</th>
-    <th>Gender</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <% @actors.each do |actor| %>
+    <div class="row">
+      <div class="span4" style="text-align:left;"><%= actor.name %></div>
+      <div class="span3" style="text-align:left;"><%= actor.date_of_birth %></div>
+      <div class="span3" style="text-align:left;"><%= actor.gender %></div>
+      <div class="span2">
+        <%= link_to 'Show', actor %>/<%= link_to 'Edit', edit_actor_path(actor) %>/<%= link_to 'Remove', actor, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+      <div class="row">
+        <div class="span12" style="padding-left:20px;">
+          <hr />
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-<% @actors.each do |actor| %>
-  <tr>
-    <td><%= actor.name %></td>
-    <td><%= actor.date_of_birth %></td>
-    <td><%= actor.gender %></td>
-    <td><%= link_to 'Show', actor %></td>
-    <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
-    <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <div class="row">
+    <%= link_to 'Add A New Actor', new_actor_path %>
+  </div>
+</div>
 
-<br />
-
-<%= link_to 'New Actor', new_actor_path %>

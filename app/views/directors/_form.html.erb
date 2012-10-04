@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <div class="row">
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_select :date_of_birth %>
+  <div class="row">
+    <label>Date of Birth</label>
+    <%= f.text_field :date_of_birth, :class => 'datepicker', :readonly => 1 %>
   </div>
-  <div class="field">
-    <%= f.label :gender %><br />
+  <div class="row">
+    <%= f.label :gender %>
     <%= f.text_field :gender %>
   </div>
   <div class="actions">
