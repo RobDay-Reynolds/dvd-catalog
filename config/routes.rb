@@ -1,4 +1,10 @@
 DvdCatalog::Application.routes.draw do
+  resources :directors
+
+  resources :actors
+
+  resources :dvds
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
