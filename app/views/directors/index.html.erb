@@ -1,5 +1,63 @@
 <div style="text-align:center;">
   <div class="row"><h1>Directors</h1></div>
+
+  <div class="row">
+    <div class="span4 offset4">
+      <h4>Search</h4>
+    </div>
+  </div>
+    <div class="row">
+      <div class="span12">
+        <ul class="nav nav-tabs">
+          <li><a class="font-weight:bold;" href="#name" data-toggle="tab">By Name</a></li>
+          <li><a class="font-weight:bold;" href="#age" data-toggle="tab">By Age Range</a></li>
+          <li><a class="font-weight:bold;" href="#dvd" data-toggle="tab">By DVD</a></li>
+        </ul>
+      </div>
+    </div>
+      <div class="tab-content">
+        <div class="tab-pane active" id="name">
+          <form>
+            <label>Name Search</label>
+            <input type="text" name="name_search" />
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+        <div class="tab-pane" id="age">
+          <form>
+            <label>Age Range Search</label>
+            <select name="age_range_search">
+              <option value=""></option>
+              <option value="0_10">0 - 10 years</option>
+              <option value="11_20">11 - 20 years</option>
+              <option value="21_30">21 - 30 years</option>
+              <option value="31_40">31 - 40 years</option>
+              <option value="41_50">41 - 50 years</option>
+              <option value="51_60">51 - 60 years</option>
+              <option value="61_70">61 - 70 years</option>
+              <option value="over">71+ years</option>
+            </select>
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+        <div class="tab-pane" id="dvd">
+          <form>
+            <label>DVD Search</label>
+            <select name="dvd_search">
+              <option value=""></option>
+              <% @dvds.each do |d| %>
+                <option value=<%= d.id %>><%= d.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+  <div class="row">
+    <div class="span12">
+      <hr />
+    </div>
+  </div>
   
   <div class="row">
     <%= link_to 'Add A New Director', new_director_path %>

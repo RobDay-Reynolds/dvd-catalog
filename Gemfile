@@ -26,7 +26,20 @@ gem 'bootstrap-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
 gem 'nilify_blanks'
-gem 'thinking-sphinx', '2.0.10'
+
+group :development, :test do
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'autotest'
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'mocha'
+  gem 'capybara'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
